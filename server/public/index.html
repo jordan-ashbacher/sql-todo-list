@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,18 +11,15 @@
     <script src="./scripts/client.js"></script>
     <title>ToDo</title>
 </head>
+
 <body>
+    <div class="container">
     <h1>TASKS</h1>
-    <section id="taskList">
-        <h2 id="todayHeading" class="taskListHeading">Today</h2>
-        <div id="todayTaskContainer" class="taskContainer"></div>
-        <!-- <h2 id="tomorrowTasks" class="taskListHeading">Tomorrow</h2>
-        <div id="tomorrowTaskContainer" class="taskContainer"></div> -->
-        <h2 id="upcomingTasks" class="taskListHeading">Upcoming</h2>
-        <div id="upcomingTaskContainer" class="taskContainer"></div>
-    </section>
-    <input type="text" id="taskIn" placeholder="I need to...">
-    <input type="date" name="date" id="dueDateIn">
-    <button id="submitTaskBtn">Add Task</button>
+    <table class="table table-hover" id="taskTable">
+        <tbody id="taskList">
+        </tbody>
+    </table>
+    </div>
 </body>
+
 </html>

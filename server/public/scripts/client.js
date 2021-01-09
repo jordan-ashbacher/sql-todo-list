@@ -44,14 +44,20 @@ function getTasks() {
 }
 
 function renderTasks(tasksToRender) {
+    console.log(tasksToRender)
     $('#taskList').empty()
     for (let task of tasksToRender) {
+        console.log(task)
         const id = task.id
-        $('#taskList').append(`<input type="checkbox" id=${task.id} class="checkbox" data-id=${task.id}>`)
+
+        let tr = $(`<tr class="taskItem" data-id=${task.id}></tr>`)
+        tr.append(`<td><input type="checkbox" id=${task.id} class="checkbox" data-id=${task.id}></td>
+        <td>${task.task}</td>
+        <td><button class="deleteTaskBtn" data-id=${task.id}>X</button></td>`)
+        
+        $('#taskList').append(tr)
         $(`#${id}`).prop('checked', task.completed)
-        $('#taskList').append(`<span class="taskItem">${task.task}</span>`)
-        $('#taskList').append(`<button class="deleteTaskBtn" data-id=${task.id}>X</button>`)
-        $('#taskList').append(`<br/>`)
+
     }
 }
 
@@ -62,6 +68,8 @@ function renderTasks(tasksToRender) {
             task: $('#taskIn').val(),
             dueDate: $('#dueDateIn').val()
         }
+        
+        console.log(newTask)
 
         $('#taskIn').val('')
         $('#dueDateIn').val('')
@@ -72,7 +80,7 @@ function renderTasks(tasksToRender) {
             data: newTask
         }).then(function (response) {
             console.log(response)
-            renderTasks(response)
+            getTasks(response)
         }).catch(function (error) {
             console.log(error)
         })
