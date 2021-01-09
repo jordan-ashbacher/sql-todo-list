@@ -1,0 +1,18 @@
+body {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.table-secondary {
+    text-decoration: line-through;
+    font-family: 'Cantarell', sans-serif;
+    font-style: italic;
+}
+
+.task {
+    font-family: 'Cantarell', sans-serif;
+}
+
+.checkbox {
+    height: 25px;
+    width: 25px;
+}
