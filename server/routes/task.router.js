@@ -29,4 +29,17 @@ taskRouter.post('/', (req, res) => {
     })
 })
 
+taskRouter.delete('/:id', (req, res) => {
+    let id = req.params.id
+    const queryText = `DELETE FROM todos WHERE id = $1`
+
+    pool.query(queryText, [id])
+    .then((result) => {
+        res.sendStatus(204)
+    }).catch((error) => {
+        console.log(error)
+        res.sendStatus(500)
+    })
+})
+
 module.exports = taskRouter

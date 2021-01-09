@@ -15,7 +15,16 @@ function setClickListeners() {
 
 function deleteTask() {
     console.log('delete clicked')
-    console.log($(this).data('id'))
+    const id = ($(this).data('id'))
+
+    $.ajax({
+        type: 'DELETE',
+        url: `/tasks/${id}`,
+    }).then(function (response) {
+        getTasks()
+    }).catch(function (error) {
+        console.log(error)
+    })
 }
 
 function getTasks() {
