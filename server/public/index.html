@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Cantarell:ital,wght@0,400;0,700;1,400&family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./vendors/bootstrap.css">
     <link rel="stylesheet" href="./styles/styles.css">
     <script src="./vendors/jquery-3.5.1.js"></script>
@@ -14,11 +16,17 @@
 
 <body>
     <div class="container">
-    <h1>TASKS</h1>
+    <h1>ALWAYS SOMETHING...</h1>
     <table class="table table-hover" id="taskTable">
         <tbody id="taskList">
         </tbody>
     </table>
+    <div class="input-group">
+        <input type="text" id="taskIn" placeholder="I need to..." class="form-control">
+        <input type="date" name="date" id="dueDateIn" class="form-control">
+        <button id="submitTaskBtn" class="btn btn-outline-secondary">Add Task</button>
+    </div>
+    
     </div>
 </body>
 

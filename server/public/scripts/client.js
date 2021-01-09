@@ -52,8 +52,8 @@ function renderTasks(tasksToRender) {
 
         let tr = $(`<tr class="taskItem" data-id=${task.id}></tr>`)
         tr.append(`<td><input type="checkbox" id=${task.id} class="checkbox" data-id=${task.id}></td>
-        <td>${task.task}</td>
-        <td><button class="deleteTaskBtn btn" data-id=${task.id}>X</button></td>`)
+        <td class="task">${task.task}</td>
+        <td><button class="deleteTaskBtn btn btn-outline-secondary" data-id=${task.id}>X</button></td>`)
         
         $('#taskList').append(tr)
         $(`#${id}`).prop('checked', task.completed)

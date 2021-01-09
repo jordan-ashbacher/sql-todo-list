@@ -1,7 +1,13 @@
-.table-secondary {
-    text-decoration: line-through;
+body {
+    font-family: 'Ubuntu', sans-serif;
 }
 
-.table-secondary:hover {
-    background-color: #6c757d;
+.table-secondary {
+    text-decoration: line-through;
+    font-family: 'Cantarell', sans-serif;
+    font-style: italic;
+}
+
+.task {
+    font-family: 'Cantarell', sans-serif;
 }
