@@ -11,6 +11,7 @@ function pageReady() {
 function setClickListeners() {
     $('#submitTaskBtn').on('click', addTask)
     $('#taskList').on('click', '.deleteTaskBtn', deleteTask)
+    $('#taskList').on('change', '.checkbox', toggleComplete)
 }
 
 function deleteTask() {
@@ -46,7 +47,7 @@ function renderTasks(tasksToRender) {
     $('#taskList').empty()
     for (let task of tasksToRender) {
         const id = task.id
-        $('#taskList').append(`<input type="checkbox" id=${task.id}>`)
+        $('#taskList').append(`<input type="checkbox" id=${task.id} class="checkbox" data-id=${task.id}>`)
         $(`#${id}`).prop('checked', task.completed)
         $('#taskList').append(`<span class="taskItem">${task.task}</span>`)
         $('#taskList').append(`<button class="deleteTaskBtn" data-id=${task.id}>X</button>`)
@@ -76,5 +77,35 @@ function renderTasks(tasksToRender) {
             console.log(error)
         })
 
+    }
+
+    function toggleComplete() {
+        console.log('checkbox checked')
+        console.log($(this).data('id'))
+        const id = $(this).data('id')
+        let newStatus = {}
+
+        console.log($(this).is(':checked'))
+        if($(this).is(':checked')) {
+            newStatus = {
+                completed: true
+            }
+        } else {
+            newStatus = {
+                completed: false
+            }
+        }
+
+        console.log(newStatus)
+
+        $.ajax({
+            type: 'PUT',
+            url: `/tasks/${id}`,
+            data: newStatus
+        }).then(function (response) {
+            getTasks(response)
+        }).catch(function (error) {
+            console.log(error)
+        })
     }
 

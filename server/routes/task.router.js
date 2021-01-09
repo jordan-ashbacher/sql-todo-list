@@ -42,4 +42,18 @@ taskRouter.delete('/:id', (req, res) => {
     })
 })
 
+taskRouter.put('/:id', (req, res) => {
+    console.log(req.body.completed)
+    let id = req.params.id
+    const queryText = `UPDATE todos SET completed = $1 WHERE id = $2`
+
+    pool.query(queryText, [req.body.completed, id])
+    .then((result) => {
+        res.sendStatus(200)
+    }).catch((error) => {
+        console.log(error)
+        res.sendStatus(500)
+    })
+})
+
 module.exports = taskRouter
