@@ -3,7 +3,7 @@ const taskRouter = express.Router()
 const pool = require('../modules/pool')
 
 taskRouter.get('/', (req, res) => {
-    const queryText = `SELECT * FROM todos ORDER BY "dueDate"`
+    const queryText = `SELECT * FROM todos ORDER BY "completed"`
 
     pool.query(queryText)
     .then((result) => {

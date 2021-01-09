@@ -1,0 +1,7 @@
+.table-secondary {
+    text-decoration: line-through;
+}
+
+.table-secondary:hover {
+    background-color: #6c757d;
+}
