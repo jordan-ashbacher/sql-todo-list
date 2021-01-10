@@ -12,7 +12,7 @@ function pageReady() {
 function setClickListeners() {
     $('#submitTaskBtn').on('click', addTask)
     $('#taskList').on('click', '.deleteTaskBtn', deleteTask)
-    $('#taskList').on('change', '.checkbox', toggleComplete)
+    $('#taskList').on('click', '.completeTaskBtn', toggleComplete)
 }
 
 function deleteTask() {
@@ -73,15 +73,16 @@ function renderTasks(tasksToRender) {
         console.log(task)
         const id = task.id
 
-        let tr = $(`<tr class="taskItem" data-id=${task.id}></tr>`)
-        tr.append(`<td><input type="checkbox" id=${task.id} class="checkbox" data-id=${task.id}></td>
+        let tr = $(`<tr class="taskItem" id=${id}  data-id=${task.id} data-status=${task.completed}></tr>`)
+        tr.append(`
         <td class="task">${task.task}</td>
+        <td><button class="completeTaskBtn btn btn-outline-light" data-id=${task.id} data-status=${task.completed}>	&#10003;</button></td>
         <td><button class="deleteTaskBtn btn btn-outline-light" data-id=${task.id}>X</button></td>`)
 
         $('#taskList').append(tr)
-        $(`#${id}`).prop('checked', task.completed)
+        console.log($(`#${id}`).data('status'))
 
-        if ($(`#${id}`).prop('checked')) {
+        if ($(`#${id}`).data('status') === true) {
             tr.addClass('table-secondary')
         }
 
@@ -115,20 +116,12 @@ function addTask() {
 }
 
 function toggleComplete() {
-    console.log('checkbox checked')
-    console.log($(this).data('id'))
+    console.log('complete button clicked')
+    
+    const status = $(this).data('status')
     const id = $(this).data('id')
-    let newStatus = {}
-
-    console.log($(this).is(':checked'))
-    if ($(this).is(':checked')) {
-        newStatus = {
-            completed: true
-        }
-    } else {
-        newStatus = {
-            completed: false
-        }
+    let newStatus = {
+        completed: !status
     }
 
     console.log(newStatus)
