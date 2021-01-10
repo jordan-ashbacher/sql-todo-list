@@ -16,3 +16,18 @@ body {
     height: 25px;
     width: 25px;
 }
+ body {
+     background: linear-gradient(#00b99f, #f9a6de);
+     background-size: cover;
+     color: #ffffff;
+     height: 100vh;
+ }
+
+ .container {
+     margin-top: 5rem;
+ }
+
+ .table {
+     color: #ffffff;
+     border: #ffffff;
+ }
