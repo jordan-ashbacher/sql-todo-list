@@ -20,8 +20,7 @@ function deleteTask() {
     const id = ($(this).data('id'))
 
     swal({
-        title: "Are you sure?",
-        text: "Once deleted, you will not be able to recover this imaginary file!",
+        title: "Are you sure you want to delete this task?",
         icon: "warning",
         buttons: true,
         dangerMode: true,
@@ -41,14 +40,6 @@ function deleteTask() {
         }
     });
 
-    //     $.ajax({
-    //         type: 'DELETE',
-    //         url: `/tasks/${id}`,
-    //     }).then(function (response) {
-    //         getTasks()
-    //     }).catch(function (error) {
-    //         console.log(error)
-    //     })
 }
 
 function getTasks() {
