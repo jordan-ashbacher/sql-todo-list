@@ -6,6 +6,7 @@ body {
     text-decoration: line-through;
     font-family: 'Cantarell', sans-serif;
     font-style: italic;
+    color: white;
 }
 
 .task {
