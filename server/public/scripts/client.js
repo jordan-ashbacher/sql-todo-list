@@ -7,6 +7,7 @@ function pageReady() {
     console.log('jq sourced')
     setClickListeners()
     getTasks()
+    console.log(moment().format("dddd, MMMM Do YYYY, h:mm:ss a"))
 }
 
 function setClickListeners() {
@@ -72,9 +73,11 @@ function renderTasks(tasksToRender) {
 
         $('#taskList').append(tr)
         console.log($(`#${id}`).data('status'))
-
+        const timeStamp = moment().format("dddd, MMMM Do YYYY, h:mm:ss a")
         if ($(`#${id}`).data('status') === true) {
             tr.addClass('table-secondary')
+            tr.children('.task').append(`<span class="completedTimeStamp">Completed: ${timeStamp}</span>`)
+
         }
 
     }
@@ -111,9 +114,12 @@ function toggleComplete() {
     
     const status = $(this).data('status')
     const id = $(this).data('id')
+    
     let newStatus = {
         completed: !status
     }
+
+    console.log($(this).siblings('td.task'))
 
     console.log(newStatus)
 
